@@ -129,6 +129,7 @@ class HyperDeck:
     async def stop(self):
         command = 'stop'
         response = await self._send_command(command)
+        print(response)
         return response and not response['error']
 
     async def select_clip_by_index(self, clip_index):

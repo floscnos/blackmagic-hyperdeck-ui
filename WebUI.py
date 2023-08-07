@@ -61,7 +61,7 @@ class WebUI:
         app.sockets = []
         app.user_map = user_map
 
-        app.router.add_get('/', self._http_request_get_index, name='index')
+        app.router.add_get('/', self._http_get_meerradio_index, name='index')
         app.router.add_get(
             '/login', self._http_request_get_login, name='login')
         app.router.add_get(
@@ -141,6 +141,9 @@ class WebUI:
 
     async def _http_request_get_hyperdeck_status(self, request):
         return web.FileResponse(path=str('WebUI/hyperdeck-status.html'))
+
+    async def _http_get_meerradio_index(self, request):
+        return web.FileResponse(path=str('WebUI/MeerRadio/index.html'))
 
     async def _http_request_get_websocket(self, request):
         resp = web.WebSocketResponse()
