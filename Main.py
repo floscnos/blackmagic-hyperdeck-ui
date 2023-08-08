@@ -3,9 +3,14 @@
 import asyncio
 import logging
 import argparse
+import os
 
 import WebUI
 import HyperDeck
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 async def main(loop, args):
@@ -54,6 +59,9 @@ if __name__ == "__main__":
                                             Default: 20''')
 
 args = parser.parse_args()
+args.hyperdeckIP = os.getenv("HYPERDECK_IP")
+args.port = os.getenv("PORT")
+args.address = os.getenv("ADDRESS")
 
 # Run the application with the user arguments
 loop = asyncio.get_event_loop()
